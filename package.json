@@ -14,7 +14,7 @@
     "CapacitorFacebookAd.podspec"
   ],
   "author": "Preetam Jakhmola",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/preetamjakhmola/capacitor-facebook-ad-plugin.git"
@@ -44,7 +44,7 @@
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
-    "@capacitor/android": "^3.0.0",
+    "@capacitor/android": "^3.0.2",
     "@capacitor/core": "^3.0.0",
     "@capacitor/docgen": "^0.0.10",
     "@capacitor/ios": "^3.0.0",
