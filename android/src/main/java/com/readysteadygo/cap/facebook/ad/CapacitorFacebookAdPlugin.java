@@ -14,6 +14,9 @@ import com.facebook.ads.*;
 import com.getcapacitor.annotation.Permission;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.RequestConfiguration;
+import com.readysteadygo.cap.facebook.ad.banner.BannerExecutor;
+import com.readysteadygo.cap.facebook.ad.interstitial.AdInterstitialExecutor;
+import com.readysteadygo.cap.facebook.ad.interstitial.InterstitialAdCallbackAndListeners;
 import com.readysteadygo.cap.facebook.ad.rewarded.AdRewardExecutor;
 
 import org.json.JSONException;
@@ -24,25 +27,25 @@ import org.json.JSONException;
 public class CapacitorFacebookAdPlugin extends Plugin {
     private final String TAG = CapacitorFacebookAdPlugin.class.getSimpleName();
     public static final JSArray EMPTY_TESTING_DEVICES = new JSArray();
-  /*  private final BannerExecutor bannerExecutor = new BannerExecutor(
+    private final BannerExecutor bannerExecutor = new BannerExecutor(
             this::getContext,
             this::getActivity,
             this::notifyListeners,
             getLogTag()
-    );*/
+    );
     private final AdRewardExecutor adRewardExecutor = new AdRewardExecutor(
             this::getContext,
             this::getActivity,
             this::notifyListeners,
             getLogTag()
     );
-    /*private final AdInterstitialExecutor adInterstitialExecutor = new AdInterstitialExecutor(
+    private final AdInterstitialExecutor adInterstitialExecutor = new AdInterstitialExecutor(
             this::getContext,
             this::getActivity,
             this::notifyListeners,
             getLogTag(),
             InterstitialAdCallbackAndListeners.INSTANCE
-    );*/
+    );
 
     // Initialize Facebook with appId
     @PluginMethod
@@ -66,40 +69,39 @@ public class CapacitorFacebookAdPlugin extends Plugin {
         }
     }
 
-   /* @PluginMethod
+    @PluginMethod
     public void showBanner(final PluginCall call) {
-        bannerExecutor.showBanner(call);
+       // bannerExecutor.showBanner(call);
     }
 
     // Hide the banner, remove it from screen, but can show it later
     @PluginMethod
     public void hideBanner(final PluginCall call) {
-        bannerExecutor.hideBanner(call);
+       // bannerExecutor.hideBanner(call);
     }
 
     // Resume the banner, show it after hide
     @PluginMethod
     public void resumeBanner(final PluginCall call) {
-        bannerExecutor.resumeBanner(call);
+       // bannerExecutor.resumeBanner(call);
     }
 
     // Destroy the banner, remove it from screen.
     @PluginMethod
     public void removeBanner(final PluginCall call) {
-        bannerExecutor.removeBanner(call);
+       // bannerExecutor.removeBanner(call);
     }
 
     @PluginMethod
     public void prepareInterstitial(final PluginCall call) {
-        adInterstitialExecutor.prepareInterstitial(call, this::notifyListeners);
+       // adInterstitialExecutor.prepareInterstitial(call, this::notifyListeners);
     }
 
     // Show interstitial Ad
     @PluginMethod
     public void showInterstitial(final PluginCall call) {
-        adInterstitialExecutor.showInterstitial(call, this::notifyListeners);
+       // adInterstitialExecutor.showInterstitial(call, this::notifyListeners);
     }
-*/
 
     @PluginMethod
     public void prepareRewardVideoAd(final PluginCall call) {

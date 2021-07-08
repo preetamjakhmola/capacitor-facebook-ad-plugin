@@ -1,6 +1,6 @@
 {
   "name": "capacitor-facebook-ad",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Capacitor plugin for facecbook ads",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",

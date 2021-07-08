@@ -17,9 +17,7 @@ import com.facebook.ads.InterstitialAdListener;
 import com.getcapacitor.JSObject;
 import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
-
-
-import java.util.function.BiConsumer;
+import com.google.android.gms.common.util.BiConsumer;
 
 import models.Executor;
 
@@ -74,15 +72,22 @@ public class AdRewardExecutor extends Executor {
                             @Override
                             public void onError(Ad ad, AdError adError) {
                                 // Ad error callback
+
+                                JSObject jsObject = new JSObject();
+                                jsObject.put("ErrorCode", adError.getErrorCode())
+                                        .put("ErrorMessage", adError.getErrorMessage());
+                                notifyListenersFunction.accept("onRewardedVideoAdFailedToShow", jsObject);
+
                                 Log.e(TAG, "Interstitial ad failed to load: " + adError.getErrorMessage());
+                                call.resolve(jsObject);
                             }
 
                             @Override
                             public void onAdLoaded(Ad ad) {
                                 // Interstitial ad is loaded and ready to be displayed
                                 Log.d(TAG, "Interstitial ad is loaded and ready to be displayed!");
-                                // Show the ad
-                                interstitialAd.show();
+                                if(interstitialAd != null && interstitialAd.isAdLoaded())
+                                    interstitialAd.show();
                             }
 
                             @Override
@@ -122,10 +127,7 @@ public class AdRewardExecutor extends Executor {
                 .get()
                 .runOnUiThread(
                     () -> {
-                        if(interstitialAd==null || interstitialAdListener==null){
 
-
-                        }
                         interstitialAd.loadAd(
                                 interstitialAd.buildLoadAdConfig()
                                         .withAdListener(interstitialAdListener)
@@ -135,7 +137,9 @@ public class AdRewardExecutor extends Executor {
                             activitySupplier.get(),
                             RewardedAdCallbackAndListeners.INSTANCE.getOnUserEarnedRewardListener(call, notifyListenersFunction)
                         );*/
-                        call.resolve();
+                        JSObject jsObject = new JSObject();
+                        jsObject.put("Ad showed","Add is showed.");
+                        call.resolve(jsObject);
                     }
                 );
         } catch (Exception ex) {

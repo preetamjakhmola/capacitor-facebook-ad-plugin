@@ -10,7 +10,7 @@ import androidx.core.util.Supplier;
 import com.getcapacitor.JSObject;
 //import com.google.android.gms.common.util.BiConsumer;
 
-import java.util.function.BiConsumer;
+import com.google.android.gms.common.util.BiConsumer;
 
 public abstract class Executor {
 
